@@ -2,7 +2,7 @@
     "name": "sinema/json-api-error",
     "description": "Format generic JSON:API errors",
     "keywords": [
-        "JSON:API",
+        "JSON API",
         "Error Responses"
     ],
     "homepage": "",
