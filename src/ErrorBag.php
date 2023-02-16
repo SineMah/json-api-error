@@ -2,6 +2,8 @@
 
 namespace Sinema\JsonApi\Error;
 
+use Sinema\JsonApi\Error\Exceptions\EmptyErrorException;
+
 class ErrorBag
 {
     protected array $errors = [];
@@ -60,11 +62,17 @@ class ErrorBag
         return $this;
     }
 
+    /**
+     * @throws EmptyErrorException
+     */
     public function toArray(): array
     {
         $castedErrors = [];
 
         foreach ($this->errors as $error) {
+
+            assert($error instanceof Error);
+
             $castedErrors[] = $error->toArray();
         }
 
