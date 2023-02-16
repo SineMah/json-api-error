@@ -26,6 +26,40 @@ class ErrorBag
         return $this->errors;
     }
 
+    public function first(): ?Error
+    {
+        if($first = reset($this->errors)) {
+            return $first;
+        }
+
+        return null;
+    }
+
+    public function next(): ?Error
+    {
+        if($next = next($this->errors)) {
+            return $next;
+        }
+
+        return null;
+    }
+
+    public function current(): ?Error
+    {
+        if($current = current($this->errors)) {
+            return $current;
+        }
+
+        return null;
+    }
+
+    public function merge(ErrorBag $errors): self
+    {
+        $this->errors = array_merge($this->errors, $errors->all());
+
+        return $this;
+    }
+
     public function toArray(): array
     {
         $castedErrors = [];
@@ -34,7 +68,7 @@ class ErrorBag
             $castedErrors[] = $error->toArray();
         }
 
-        return ['errors' => $castedErrors];
+        return $castedErrors;
     }
 
     protected function isAssoc(array $array): bool
