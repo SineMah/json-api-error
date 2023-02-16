@@ -23,6 +23,12 @@ class Response
     {
         return $this->errors;
     }
+    public function setErrors(ErrorBag $errors): self
+    {
+        $this->errors = $errors;
+
+        return $this;
+    }
 
     public function add(array|Error $errors): self
     {
@@ -33,6 +39,6 @@ class Response
 
     public function toArray(): array
     {
-        return $this->errors->toArray();
+        return ['errors' => $this->errors->toArray()];
     }
 }
