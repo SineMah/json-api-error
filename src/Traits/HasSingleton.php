@@ -1,6 +1,6 @@
 <?php
 
-namespace Sinema\JsonApi\Traits;
+namespace Sinema\JsonApi\Error\Traits;
 
 trait HasSingleton
 {

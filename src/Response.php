@@ -2,7 +2,7 @@
 
 namespace Sinema\JsonApi\Error;
 
-use Sinema\JsonApi\Traits\HasSingleton;
+use Sinema\JsonApi\Error\Traits\HasSingleton;
 
 class Response
 {
