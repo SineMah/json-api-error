@@ -28,18 +28,13 @@ class ErrorBag
 
     public function toArray(): array
     {
-        return (array) $this;
-    }
-
-    public function __toArray(): array
-    {
         $castedErrors = [];
 
         foreach ($this->errors as $error) {
             $castedErrors[] = (array) $error;
         }
 
-        return $castedErrors;
+        return ['errors' => $castedErrors];
     }
 
     protected function isAssoc(array $array): bool
