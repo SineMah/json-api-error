@@ -1,5 +1,8 @@
 # JSON:API error response
 
+## Spec
+https://jsonapi.org/examples/#error-objects-basics
+
 ## Installation
 `composer require sinema/json-api-error`
 
@@ -19,9 +22,7 @@ class AnyController extends Controller
 {
     public function show(): JsonResponse
     {
-
         return Laravel::get()->json(
-            404,
             Error::fromArray(
                 [
                     'status' => 404,
@@ -29,9 +30,9 @@ class AnyController extends Controller
                     'title' => 'Item not found',
                     'detail' => sprintf('Item %s not found', request('item_uuid')),
                 ]
-            )
+            ),
+            404
         );
-//        https://jsonapi.org/examples/#error-objects-basics
     }
 }
 ```
@@ -49,7 +50,7 @@ Response
 }
 ```
 
-Build an error stack
+Build an error stack.
 ```php
 <?php
 
@@ -67,7 +68,7 @@ class AnyController extends Controller
             ->add(Error::fromArray(['status' => 500, 'code' => 'first_error']))
             ->add(Error::fromArray(['status' => 500, 'code' => 'second_error']))
             ->add(Error::fromArray(['status' => 500, 'code' => 'third_error']))
-            ->json(500);
+            ->json();
     }
 }
 ```
@@ -89,4 +90,14 @@ Response
         }
     ]
 }
+```
+
+## Laravel Response
+You do not need to pass a status code via the json method. The status code will be fetched from the first error you pushed in the bag.
+```php
+->json()
+```
+You can also overwrite the status code with the json method.
+```php
+->json(null, 401)
 ```
