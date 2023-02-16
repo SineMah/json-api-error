@@ -21,17 +21,12 @@ class Error
         return call_user_func_array([Error::class, 'load'], array_merge($default, $only));
     }
 
-    public static function load(int $status, ?string $code, ?string $source, string $title, ?string $detail): self
+    public static function load(int $status, ?string $code, ?string $source, ?string $title, ?string $detail): self
     {
         return new self($status, $code, $source, $title, $detail);
     }
 
     public function toArray(): array
-    {
-        return (array) $this;
-    }
-
-    public function __toArray(): array
     {
         $error = [];
 

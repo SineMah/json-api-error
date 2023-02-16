@@ -31,7 +31,7 @@ class ErrorBag
         $castedErrors = [];
 
         foreach ($this->errors as $error) {
-            $castedErrors[] = (array) $error;
+            $castedErrors[] = $error->toArray();
         }
 
         return ['errors' => $castedErrors];
