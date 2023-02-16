@@ -14,6 +14,6 @@ class Laravel extends JsonApiErrorResponse
     {
         $this->errors->add($errors);
 
-        return response()->json($status, $this->errors->toArray(), $headers);
+        return response()->json($this->errors->toArray(), $status, $headers);
     }
 }
