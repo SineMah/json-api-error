@@ -1,12 +1,12 @@
 <?php
 
-namespace Sinema\JsonApi\Error\Responses;
+namespace Sinemah\JsonApi\Error\Responses;
 
 use Illuminate\Http\JsonResponse;
-use Sinema\JsonApi\Error\Exceptions\StatusUnavailableException;
-use Sinema\JsonApi\Error\Response as JsonApiErrorResponse;
-use Sinema\JsonApi\Error\Error;
-use Sinema\JsonApi\Error\Traits\HasSingleton;
+use Sinemah\JsonApi\Error\Exceptions\StatusUnavailableException;
+use Sinemah\JsonApi\Error\Response as JsonApiErrorResponse;
+use Sinemah\JsonApi\Error\Error;
+use Sinemah\JsonApi\Error\Traits\HasSingleton;
 
 class Laravel extends JsonApiErrorResponse
 {

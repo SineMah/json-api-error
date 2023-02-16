@@ -1,8 +1,8 @@
 <?php
 
-namespace Sinema\JsonApi\Error;
+namespace Sinemah\JsonApi\Error;
 
-use Sinema\JsonApi\Error\Exceptions\EmptyErrorException;
+use Sinemah\JsonApi\Error\Exceptions\EmptyErrorException;
 
 class Error
 {

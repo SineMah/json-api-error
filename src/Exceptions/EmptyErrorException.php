@@ -1,6 +1,6 @@
 <?php
 
-namespace Sinema\JsonApi\Error\Exceptions;
+namespace Sinemah\JsonApi\Error\Exceptions;
 
 use Exception;
 

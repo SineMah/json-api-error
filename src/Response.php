@@ -1,8 +1,8 @@
 <?php
 
-namespace Sinema\JsonApi\Error;
+namespace Sinemah\JsonApi\Error;
 
-use Sinema\JsonApi\Error\Traits\HasSingleton;
+use Sinemah\JsonApi\Error\Traits\HasSingleton;
 
 class Response
 {

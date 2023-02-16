@@ -14,8 +14,8 @@ In your Laravel controller:
 
 namespace App\Http\Controllers;
 
-use Sinema\JsonApi\Error\Error;
-use Sinema\JsonApi\Error\Responses\Laravel;
+use Sinemah\JsonApi\Error\Error;
+use Sinemah\JsonApi\Error\Responses\Laravel;
 use Illuminate\Http\JsonResponse;
 
 class AnyController extends Controller
@@ -56,8 +56,8 @@ Build an error stack.
 
 namespace App\Http\Controllers;
 
-use Sinema\JsonApi\Error\Error;
-use Sinema\JsonApi\Error\Responses\Laravel;
+use Sinemah\JsonApi\Error\Error;
+use Sinemah\JsonApi\Error\Responses\Laravel;
 use Illuminate\Http\JsonResponse;
 
 class AnyController extends Controller
