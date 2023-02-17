@@ -23,6 +23,8 @@
     },
     "autoload-dev": {},
     "scripts": {},
-    "require-dev": {},
+    "require-dev": {
+        "laravel/framework": "^9.12"
+    },
     "minimum-stability": "dev"
 }
