@@ -8,96 +8,73 @@ https://jsonapi.org/examples/#error-objects-basics
 
 ## Usage
 
-In your Laravel controller:
+### Basic Usage
 ```php
 <?php
 
-namespace App\Http\Controllers;
-
 use Sinemah\JsonApi\Error\Error;
-use Sinemah\JsonApi\Error\Responses\Laravel;
-use Illuminate\Http\JsonResponse;
+use Sinemah\JsonApi\Error\ErrorBag;
 
-class AnyController extends Controller
-{
-    public function show(): JsonResponse
-    {
-        return Laravel::get()->json(
-            Error::fromArray(
-                [
-                    'status' => 404,
-                    'source' => null,
-                    'title' => 'Item not found',
-                    'detail' => sprintf('Item %s not found', request('item_uuid')),
-                ]
-            ),
-            404
-        );
-    }
-}
+$errors = new ErrorBag();
+
+$errors->add(
+    Error::fromArray(
+        [
+            'status' => 404,
+            'source' => null,
+            'title' => 'Item not found',
+            'detail' => sprintf('Item %s not found', 'some-id'),
+        ]
+    )
+);
+
+$errors->toArray()
 ```
 
-Response
+Result as JSON representation
+```json
+[
+  {
+    "status": 404,
+    "title": "Item not found",
+    "detail": "Item some-id not found"
+  }
+]
+```
+
+### Response Usage
+
+```php
+<?php
+
+use Sinemah\JsonApi\Error\Error;
+use Sinemah\JsonApi\Error\Response;
+
+$response = Response::get();
+
+$response->add(
+    Error::fromArray(
+        [
+            'status' => 404,
+            'source' => null,
+            'title' => 'Item not found',
+            'detail' => sprintf('Item %s not found', 'some-id'),
+        ]
+    )
+);
+
+$response->toArray()
+```
+
+Result as JSON representation
 ```json
 {
     "errors": [
         {
             "status": 404,
-            "title": "Bike not found",
-            "detail": "Bike bd11f048-8663-4d95-8c7a-02a5579b0682 not found in customer data"
+            "title": "Item not found",
+            "detail": "Item some-id not found"
         }
     ]
 }
-```
-
-Build an error stack.
-```php
-<?php
-
-namespace App\Http\Controllers;
-
-use Sinemah\JsonApi\Error\Error;
-use Sinemah\JsonApi\Error\Responses\Laravel;
-use Illuminate\Http\JsonResponse;
-
-class AnyController extends Controller
-{
-    public function show(): JsonResponse
-    {
-        return Laravel::get()
-            ->add(Error::fromArray(['status' => 500, 'code' => 'first_error']))
-            ->add(Error::fromArray(['status' => 500, 'code' => 'second_error']))
-            ->add(Error::fromArray(['status' => 500, 'code' => 'third_error']))
-            ->json();
-    }
-}
-```
-Response
-```json
-{
-    "errors": [
-        {
-            "status": 500,
-            "code": "first_error"
-        },
-        {
-            "status": 500,
-            "code": "second_error"
-        },
-        {
-            "status": 500,
-            "code": "third_error"
-        }
-    ]
-}
-```
-
-## Laravel Response
-You do not need to pass a status code via the json method. The status code will be fetched from the first error you pushed in the bag.
-```php
-->json()
-```
-You can also overwrite the status code with the json method.
-```php
-->json(null, 401)
 ```

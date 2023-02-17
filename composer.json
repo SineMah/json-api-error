@@ -5,7 +5,7 @@
         "JSON API",
         "Error Responses"
     ],
-    "homepage": "",
+    "homepage": "https://github.com/SineMah/json-api-error",
     "license": "MIT",
     "authors": [
         {
@@ -23,8 +23,5 @@
     },
     "autoload-dev": {},
     "scripts": {},
-    "require-dev": {
-        "laravel/framework": "^9.12"
-    },
     "minimum-stability": "dev"
 }
